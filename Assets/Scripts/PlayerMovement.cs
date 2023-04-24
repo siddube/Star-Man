@@ -21,6 +21,11 @@ public class PlayerMovement : MonoBehaviour
   private void Update()
   {
     ProcessTouchInput();
+    KeepShipOnScreen();
+  }
+  private void FixedUpdate()
+  {
+    ProcessPhysicsFromInput();
   }
 
   private void ProcessTouchInput()
@@ -30,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
       Vector2 touchPos = Touchscreen.current.primaryTouch.position.ReadValue();
       Vector3 worldPos = mainCamera.ScreenToWorldPoint(touchPos);
 
-      movementDir = worldPos - this.gameObject.transform.position;
+      movementDir = worldPos - transform.position;
       movementDir.z = 0;
       movementDir.Normalize();
     }
@@ -40,9 +45,28 @@ public class PlayerMovement : MonoBehaviour
     }
   }
 
-  private void FixedUpdate()
+  private void KeepShipOnScreen()
   {
-    ProcessPhysicsFromInput();
+    Vector3 newPos = transform.position;
+    Vector3 viewportPos = mainCamera.WorldToViewportPoint(transform.position);
+    if (viewportPos.x > 1)
+    {
+      newPos.x = -newPos.x + 0.1f;
+    }
+    else if (viewportPos.x < -1)
+    {
+      newPos.x = -newPos.x - 0.1f;
+    }
+    else if (viewportPos.y > 1)
+    {
+      newPos.y = -newPos.y + 0.1f;
+    }
+    else if (viewportPos.y < -1)
+    {
+      newPos.y = -newPos.y - 0.1f;
+    }
+
+    transform.position = newPos;
   }
 
   private void ProcessPhysicsFromInput()
