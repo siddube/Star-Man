@@ -9,4 +9,9 @@ public class Asteroid : MonoBehaviour
     if (playerColiision == null) { return; }
     playerColiision.Crash();
   }
+
+  private void OnBecameInvisible()
+  {
+    Destroy(gameObject);
+  }
 }
