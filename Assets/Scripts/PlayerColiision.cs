@@ -6,7 +6,7 @@ public class PlayerColiision : MonoBehaviour
   public void Crash()
   {
     this.gameObject.SetActive(false);
-    gameMenuHandler.gameObject.SetActive(true);
+    gameMenuHandler.EndGame();
   }
 
 }
