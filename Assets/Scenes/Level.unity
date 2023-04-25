@@ -201,6 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 300d1f5fb0a6f7b45b97caba2198c398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameMenuHandler: {fileID: 1051325214}
 --- !u!64 &148138531
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1033,7 +1034,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1051325213
 Transform:
   m_ObjectHideFlags: 0
@@ -1061,6 +1062,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50a82b733f809b143b42c1308b761191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverUI: {fileID: 1051325212}
+  asteroidSpawner: {fileID: 208553888}
 --- !u!1 &1243033555
 GameObject:
   m_ObjectHideFlags: 0
